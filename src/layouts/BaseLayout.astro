@@ -1,0 +1,40 @@
+---
+import Nav from "../components/Nav.astro";
+import MainHead from "../components/MainHead.astro";
+import Footer from "../components/Footer.astro";
+
+const iconLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/DavidEGiraldo",
+    icon: "mdi:github",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/degiraldod/",
+    icon: "mdi:linkedin",
+  },
+  { label: "RSS", href: "/", icon: "mdi:rss" },
+];
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <MainHead title={title} description={description} />
+  </head>
+  <body
+    class="bg-default text-nord-6 font-sans leading-tight antialiased scroll-smooth [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:bg-nord-3 [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-solid [&::-webkit-scrollbar-thumb]:border-nord-0 [&::-webkit-scrollbar-thumb]:rounded-xl [&::-webkit-scrollbar-track]:bg-default transition-all"
+  >
+    <header>
+      <Nav iconLinks={iconLinks} />
+    </header>
+    <main
+      class="px-6 sm:px-12 lg:px-24 mx-auto w-full max-w-[1600px] min-h-[calc(100vh-82px)]"
+    >
+      <slot />
+    </main>
+    <Footer iconLinks={iconLinks} />
+  </body>
+</html>

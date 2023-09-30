@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, github, external, tech, body } = Astro.props;
+---
+
+<li class="relative">
+  <div
+    class="flex flex-col justify-between items-center relative h-full py-8 px-7 shadow-md hover:shadow-xl rounded bg-nord-0 overflow-auto transition hover:-translate-y-2"
+  >
+    <div>
+      <div class="flex justify-between items-center mb-9 w-full">
+        <Icon name="mdi:folder-outline" class="w-10 h-10 text-nord-8" />
+        <div class="flex items-center gap-2.5">
+          {
+            github && (
+              <a href={github} class=" z-10">
+                <Icon
+                  name="mdi:github"
+                  class="h-6 w-6 hover:text-nord-7 transition hover:-translate-y-1"
+                />
+              </a>
+            )
+          }
+          {
+            external && (
+              <a href={external} class=" z-10">
+                <Icon
+                  name="mdi:open-in-new"
+                  class="h-6 w-6 hover:text-nord-7 transition hover:-translate-y-1"
+                />
+              </a>
+            )
+          }
+        </div>
+      </div>
+      <h2 class="mb-2.5 text-xl font-semibold leading-[1.1] w-full">
+        <a
+          href={external ? external : github ? github : "#"}
+          class="before:block before:absolute before:z-0 before:w-full before:h-full before:top-0 before:left-0 hover:text-nord-7 transition"
+          >{title}</a
+        >
+      </h2>
+      <div class="text-base text-nord-4">
+        <p class="m-0">{body}</p>
+      </div>
+    </div>
+    <div class="w-full">
+      <ul class="flex items-start w-full flex-wrap p-0 mt-5 list-none gap-4">
+        {
+          tech.map((tech) => (
+            <li class="text-nord-4 font-mono text-sm whitespace-nowrap">
+              {tech}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</li>

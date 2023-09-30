@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import FeaturedProject from "./FeaturedProject.astro";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
+
+const projects = await getCollection("projects");
+const featuredProjects = projects.filter(
+  (project) => project.data.showInProjects
+);
+---
+
+<section class="flex gap-6 max-w-screen-xl mx-auto py-14 sm:py-20 md:py-24">
+  <div class="flex flex-col w-full">
+    <h2
+      class="flex items-center relative w-full mt-2.5 mb-10 leading-[1.1] text-clamp-subtitle font-semibold whitespace-nowrap after:ml-2.5 sm:after:ml-5 after:w-full md:after:w-52 lg:after:w-80 after:top-[-5px] after:h-[1px] after:bg-nord-3"
+    >
+      Some Things I've Build
+    </h2>
+    <ul
+      class="list-none p-0 m-0 [&>li>.project-content]:col-[1/-1] md:[&>*:nth-child(odd)>.project-content]:col-[5/-1] lg:[&>*:nth-child(odd)>.project-content]:col-[7/-1] [&>li>.project-image]:col-[1/-1] md:[&>*:nth-child(odd)>.project-image]:col-[1/8] md:[&>*:nth-child(odd)>.project-content]:text-right [&>*:nth-child(odd)>.project-content>.list]:justify-start md:[&>*:nth-child(odd)>.project-content>.list]:justify-end md:[&>*:nth-child(even)>.project-content]:col-[1/9] lg:[&>*:nth-child(even)>.project-content]:col-[1/7] md:[&>*:nth-child(even)>.project-image]:col-[6/-1]"
+    >
+      {
+        featuredProjects.map((project) => (
+          <FeaturedProject {...project.data} body={project.body} />
+        ))
+      }
+    </ul>
+    <div class="mx-auto">
+      <Button href="/projects">
+        <Icon name="mdi:folder-multiple-outline" class="h-6 w-6" />
+         All Projects
+      </Button>
+    </div>
+  </div>
+</section>

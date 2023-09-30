@@ -1,0 +1,24 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "astro": "^3.0.8",
+    "astro-icon": "^1.0.0-next.2",
+    "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "@iconify-json/flagpack": "^1.1.9",
+    "@iconify-json/mdi": "^1.1.54",
+    "@iconify-json/ph": "^1.1.6",
+    "@iconify-json/simple-icons": "^1.1.72"
+  }
+}

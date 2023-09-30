@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, github, external, tech, images, body } = Astro.props;
+---
+
+<li
+  class="grid mb-7 sm:mb-16 md:mb-24 relative gap-2.5 grid-cols-12 items-center shadow-md md:shadow-none"
+>
+  <div
+    class="project-content relative flex flex-col justify-center md:block row-[1/-1] pt-6 sm:pt-10 px-6 sm:px-20 pb-5 sm:pb-8 md:p-0 h-full md:h-auto z-10"
+  >
+    <p class="my-2.5 text-nord-8 font-mono text-sm">Featured Project</p>
+    <h3 class="mb-5 text-clamp-project-title leading-[1.1] font-semibold">
+      <a
+        href={external ? external : github ? github : "#"}
+        class="inline-block no-underline static md:relative before:block before:absolute before:z-0 before:w-full before:h-full before:top-0 before:left-0 hover:text-nord-7 transition"
+        >{title}</a
+      >
+    </h3>
+    <div
+      class="md:shadow-md relative py-5 px-0 md:p-6 rounded bg-transparent md:bg-nord-0 text-nord-4 text-base md:hover:shadow-xl transition"
+    >
+      <p>{body}</p>
+    </div>
+    <ul
+      class="list flex flex-wrap gap-5 relative my-2.5 md:mt-6 md:mb-4 p-0 list-none text-nord-4"
+    >
+      {
+        tech.map((tech) => (
+          <li class="text-nord-4 font-mono text-sm whitespace-nowrap">
+            {tech}
+          </li>
+        ))
+      }
+    </ul>
+    <div
+      class="list flex items-center relative mt-2.5 gap-5 py-2.5 text-nord-4"
+    >
+      {
+        github && (
+          <a href={github}>
+            <Icon
+              name="mdi:github"
+              class="h-6 w-6 hover:text-nord-7 transition hover:-translate-y-1"
+            />
+          </a>
+        )
+      }
+      {
+        external && (
+          <a href={external}>
+            <Icon
+              name="mdi:open-in-new"
+              class="h-6 w-6 hover:text-nord-7 transition hover:-translate-y-1"
+            />
+          </a>
+        )
+      }
+    </div>
+  </div>
+  <div
+    class="project-image relative row-[1/-1] shadow-md hover:shadow-xl z-0 h-full md:h-auto opacity-25 md:opacity-100"
+  >
+    <a
+      href={external ? external : github ? github : "#"}
+      class="w-full h-full rounded align-middle"
+    >
+      <div
+        class="relative w-full h-full rounded before:absolute before:left-0 before:right-0 before:top-0 before:z-10 before:h-full before:w-full before:bg-nord-7 md:before:opacity-40 before:opacity-60 before:rounded hover:before:opacity-0 before:transition"
+      >
+        <img
+          src={images[0]}
+          alt="Project picture"
+          class="object-cover w-full h-full rounded-lg"
+        />
+      </div>
+    </a>
+  </div>
+</li>

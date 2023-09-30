@@ -1,0 +1,14 @@
+---
+import { Icon } from "astro-icon/components";
+const { icon, hex = "text-[#8FBCBB]", extraClass } = Astro.props;
+---
+
+<div
+  class:list={[
+    "inline-flex items-center px-4 py-2 gap-2 bg-nord-0 rounded leading-snug whitespace-nowrap shadow text-sm",
+    extraClass,
+  ]}
+>
+  <Icon name={icon} class:list={["h-5 w-5", hex]} />
+  <slot />
+</div>

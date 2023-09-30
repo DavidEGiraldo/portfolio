@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Project from "../components/Project.astro";
+
+const projects = await getCollection("projects");
+---
+
+<BaseLayout>
+  <div class="pt-24 mx-auto mb-12 md:mb-24">
+    <h1 class="m-0 pb-2 text-clamp-projects font-semibold leading-[1.1]">
+      Projects
+    </h1>
+    <p class="m-0 text-sm md:text-base text-nord-8 font-mono">
+      A big list of things I've worked on
+    </p>
+    <ul
+      class="grid grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] lg:grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] list-none p-0 mt-12 gap-4 relative"
+    >
+      {
+        projects.map((project) => (
+          <Project {...project.data} body={project.body} />
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

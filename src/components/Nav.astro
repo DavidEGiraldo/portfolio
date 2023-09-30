@@ -1,0 +1,120 @@
+---
+import { Icon } from "astro-icon/components";
+
+const textLinks = [
+  { label: "Home", href: "/" },
+  //{label: "About", href: "/about"},
+  { label: "Projects", href: "/projects" },
+  //{label: "My Favorites", href: "/my-favorites"},
+  { label: "Blog", href: "#" },
+  //{label: "Contact", href: "/contact"},
+];
+
+const { iconLinks } = Astro.props;
+---
+
+<nav
+  class="flex justify-between py-4 px-6 sm:px-12 lg:px-24 bg-nord-0 shadow-lg fixed top-0 w-full font-mono text-sm z-50"
+>
+  <div>
+    <a
+      href="/"
+      class="flex gap-2 items-center font-mono text-base text-nord-8 whitespace-nowrap"
+    >
+      <Icon name="ph:terminal-bold" class="h-6 w-6 text-nord-6" />
+       David_Giraldo
+    </a>
+  </div>
+  <div class="menu-button md:hidden cursor-pointer">
+    <Icon name="mdi:menu" class="h-6 w-6 text-nord-8" />
+  </div>
+  <div
+    class="menu flex max-md:flex-col max-md:justify-around max-md:items-center max-md:fixed max-md:top-0 max-md:bottom-0 max-md:right-0 max-md:py-12 max-md:px-2.5 max-md:w-[min(75vw,_400px)] max-md:h-screen max-md:outline-0 max-md:bg-nord-1 max-md:shadow-lg max-md:z-20 max-md:visible md:contents relative max-md:translate-x-full max-md:transition"
+  >
+    <Icon
+      name="mdi:window-close"
+      class="close-button md:hidden h-6 w-6 text-nord-8 absolute top-4 right-6 sm:right-12 cursor-pointer"
+    />
+    <div
+      class="flex max-md:flex-col max-md:justify-between max-md:items-center max-md:w-full max-md:text-center max-md:py-8 max-md:text-lg md:block"
+    >
+      <ul
+        class="flex flex-col md:flex-row md:h-full md:items-center gap-2.5 sm:gap-5 md:gap-6 list-none max-md:w-full"
+      >
+        {
+          textLinks.map(({ label, href }) => (
+            <li class="max-md:text-clamp-nav">
+              <a
+                aria-current={Astro.url.pathname === href}
+                href={href}
+                class:list={[
+                  "max-md:inline-block max-md:w-full max-md:pt-1 max-md:px-5 max-md:pb-5 hover:text-nord-7 transition",
+                  {
+                    "text-nord-7 underline underline-offset-4":
+                      Astro.url.pathname === href ||
+                      (href !== "/" && Astro.url.pathname.startsWith(href)),
+                  },
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <hr class="md:hidden w-4/5 border-nord-3 border" />
+    <div class="flex justify-center max-md:w-full">
+      <div class="flex gap-5 items-center max-md:py-6">
+        {
+          iconLinks.map(({ href, icon, label }) => (
+            <a href={href} aria-label={label}>
+              <Icon name={icon} class="h-6 w-6 hover:text-nord-7 transition" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let menu = document.querySelector(".menu");
+  let main = document.querySelector("main");
+  let footer = document.querySelector("footer");
+  let body = document.querySelector("body");
+
+  const menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", () => {
+    menu.classList.remove("max-md:translate-x-full");
+    body.classList.add("overflow-y-hidden");
+    main.classList.add("blur");
+    footer.classList.add("blur");
+  });
+
+  const closeButton = document.querySelector(".close-button");
+  closeButton.addEventListener("click", () => {
+    menu.classList.add("max-md:translate-x-full");
+    body.classList.remove("overflow-y-hidden");
+    main.classList.remove("blur");
+    footer.classList.remove("blur");
+  });
+
+  body.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (menu.contains(target) || menuButton.contains(target)) {
+      return;
+    }
+    if (
+      window.innerWidth >= 768 ||
+      menu.classList.contains("max-md:translate-x-full")
+    ) {
+      return;
+    }
+    event.preventDefault();
+    menu.classList.toggle("max-md:translate-x-full");
+    body.classList.toggle("overflow-y-hidden");
+    main.classList.toggle("blur");
+    footer.classList.toggle("blur");
+  });
+</script>

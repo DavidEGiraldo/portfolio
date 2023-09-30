@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+const { iconLinks } = Astro.props;
+---
+
+<footer
+  class="flex flex-col justify-center items-center h-auto min-h-[70px] p-4 text-center text-base hover:text-nord-7 transition"
+>
+  <div class="block w-fit mt-0 mx-auto mb-2.5">
+    <ul class="flex justify-between items-center p-0 m-0 list-none gap-5">
+      {
+        iconLinks.map(({ href, icon, label }) => (
+          <li>
+            <a href={href}>
+              <Icon name={icon} class="h-6 w-6" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="font-mono text-xs">
+    <a href="https://github.com/DavidEGiraldo" class="p-2.5"
+      >Designed & Build by David Giraldo</a
+    >
+  </div>
+</footer>

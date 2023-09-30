@@ -1,0 +1,86 @@
+---
+import Pill from "./Pill.astro";
+
+const skills = [
+  { skill: "HTML", icon: "simple-icons:html5", hex: "text-[#E34F26]" },
+  { skill: "CSS", icon: "simple-icons:css3", hex: "text-[#1572B6]" },
+  { skill: "Sass", icon: "simple-icons:sass", hex: "text-[#CC6699]" },
+  { skill: "Bootstrap", icon: "simple-icons:bootstrap", hex: "text-[#7952B3]" },
+  { skill: "Tailwind CSS", icon: "simple-icons:tailwindcss", hex: "text-[#06B6D4]" },
+  { skill: "JavaScript", icon: "simple-icons:javascript", hex: "text-[#F7DF1E]" },
+  { skill: "React", icon: "simple-icons:react", hex: "text-[#61DAFB]" },
+  { skill: "Java", icon: "mdi:language-java", hex: "text-[#007396]" },
+  { skill: "Python", icon: "simple-icons:python", hex: "text-[#3776AB]" },
+  { skill: "Flask", icon: "simple-icons:flask", hex: "text-[#000000]" },
+  { skill: "Node.js", icon: "simple-icons:nodedotjs", hex: "text-[#339933]" },
+  { skill: "Express.js", icon: "simple-icons:express", hex: "text-[#000000]" },
+  { skill: "MongoDB", icon: "simple-icons:mongodb", hex: "text-[#47A248]" },
+  { skill: "Mongoose", icon: "simple-icons:mongoose", hex: "text-[#880000]" },
+  { skill: "PostgreSQL", icon: "simple-icons:postgresql", hex: "text-[#4169E1]" },
+  { skill: "Sequelize", icon: "simple-icons:sequelize", hex: "text-[#52B0E7]" },
+  { skill: "SQLite", icon: "simple-icons:sqlite", hex: "text-[#003B57]" },
+  { skill: "MySQL", icon: "simple-icons:mysql", hex: "text-[#4479A1]" },
+  { skill: "Next.js", icon: "simple-icons:nextdotjs", hex: "text-[#000000]" },
+  { skill: "Astro", icon: "simple-icons:astro", hex: "text-[#BC52EE]" },
+  { skill: "Vitest", icon: "simple-icons:vitest", hex: "text-[#6E9F18]" },
+  { skill: "Vite.js", icon: "simple-icons:vite", hex: "text-[#646CFF]" },
+  { skill: "Webpack", icon: "simple-icons:webpack", hex: "text-[#8DD6F9]" },
+  { skill: "WordPress", icon: "simple-icons:wordpress", hex: "text-[#21759B]" },
+];
+
+const toLearn = [
+  { skill: "TypeScript", icon: "simple-icons:typescript", hex: "text-[#3178C6]" },
+  { skill: "Swagger", icon: "simple-icons:swagger", hex: "text-[#85EA2D]" },
+  { skill: "Django", icon: "simple-icons:django", hex: "text-[#092E20]" },
+  { skill: "Firebase", icon: "simple-icons:firebase", hex: "text-[#FFCA28]" },
+  { skill: "Redis", icon: "simple-icons:redis", hex: "text-[#DC382D]" },
+  { skill: "GraphQL", icon: "simple-icons:graphql", hex: "text-[#E10098]" },
+];
+
+const languages = [
+  { language: "Spanish", icon: "flagpack:co" },
+  { language: "English", icon: "flagpack:us" },
+];
+---
+
+<section class="flex gap-6 max-w-screen-xl mx-auto py-14 sm:py-20 md:py-24">
+  <div class="flex flex-col">
+    <h2
+      class="flex items-center relative w-full mt-2.5 mb-10 leading-[1.1] text-clamp-subtitle font-semibold whitespace-nowrap after:ml-2.5 sm:after:ml-5 after:w-full md:after:w-52 lg:after:w-80 after:top-[-5px] after:h-[1px] after:bg-nord-3"
+    >
+      Skills
+    </h2>
+    <p class="font-mono ml-1 text-nord-8">I already know...</p>
+    <div
+      class="flex gap-2 sm:gap-3 md:gap-4 flex-wrap mt-5 after:flex-grow-[9999] after:basis-auto"
+    >
+      {
+        skills.map(({ skill, icon, hex }) => (
+          <Pill icon={icon} hex={hex} extraClass="flex-grow justify-center">
+            {skill}
+          </Pill>
+        ))
+      }
+    </div>
+    <p class="font-mono ml-1 mt-8 text-nord-8">I want to learn...</p>
+    <div
+      class="flex gap-2 sm:gap-3 md:gap-4 flex-wrap mt-5 after:flex-grow-[9999] after:basis-auto"
+    >
+      {
+        toLearn.map(({ skill, icon, hex }) => (
+          <Pill icon={icon} hex={hex} extraClass="flex-grow justify-center">
+            {skill}
+          </Pill>
+        ))
+      }
+    </div>
+    <p class="font-mono ml-1 mt-8 text-nord-8">I speak...</p>
+    <div class="flex gap-2 sm:gap-3 md:gap-4 flex-wrap mt-5">
+      {
+        languages.map(({ language, icon }) => (
+          <Pill icon={icon}>{language}</Pill>
+        ))
+      }
+    </div>
+  </div>
+</section>
