@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -24,8 +26,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Calibre','Inter','San Francisco','SF Pro Text'],
-        mono: ['SF Mono','Fira Code','Fira Mono','Roboto Mono']
+        sans: ['Inter',...defaultTheme.fontFamily.sans],
+        mono: ['Fira Code',...defaultTheme.fontFamily.mono]
       },
       backgroundColor: {
         default: '#242933',
