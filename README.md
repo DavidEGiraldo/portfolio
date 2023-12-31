@@ -1,3 +1,7 @@
+# Portafolio
+Este es mi sitio web personal desarrollado con Astro en donde puedes conocer más sobre mí, ver mis habilidades y mis proyectos.
+
+---
 # Astro Starter Kit: Minimal
 
 ```
