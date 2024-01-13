@@ -2,13 +2,13 @@
 date: '2023-12-30'
 title: 'My Shop'
 github: 'https://github.com/DavidEGiraldo/my-store/'
-external: 'https://degiraldod-my-store.vercel.app/'
+external: 'https://my-store-hmxh.onrender.com'
 tech:
   - Express.js
-  - Node.js
-  - API REST
+  - PostgreSQL
+  - Sequelize
 images:
-  - 'https://github.com/DavidEGiraldo/my-store/assets/113148688/9e4e04f0-bd2f-4e7b-a52f-9461ffb07246'
+  - 'https://github.com/DavidEGiraldo/my-store/assets/113148688/6bcacada-7c43-4b46-b34b-fc40cacc5eeb'
 showInProjects: true
 ---
-My-Store: A Node.js and Express.js RESTful API for E-commerce. Facilitates easy management of products, users, and categories with CRUD operations, error handling, data validation, and test data generation using Boom, Joi, and Faker. Provides in-memory data persistence services for efficient daily tasks.
+An Express.js, Sequelize and PostgreSQL REST API for E-commerce. Facilitates easy management of products, categories, orders, users and customers with CRUD operations, error handling, data validation, and test data generation using Boom, Joi, and Faker. Provides pre-configured Docker containers for database and pgAdmin.
